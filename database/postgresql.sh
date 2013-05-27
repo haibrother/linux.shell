@@ -11,6 +11,9 @@ PKG=$(whiptail --title "$TITLE" --menu "Options:" 20 60 5 \
 case "$PKG" in
 	1)
 		yum install -y postgresql-server
+		service postgresql initdb
+		service postgresql start
+		chkconfig postgresql on
 		;;
 	2)
 		yum install -y postgresql
@@ -26,4 +29,4 @@ case "$PKG" in
 		RETVAL=1
 esac
 
-#exit $RETVAL
+exit $RETVAL
