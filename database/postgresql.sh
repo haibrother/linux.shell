@@ -20,4 +20,4 @@ case "$PKG" in
 		RETVAL=1
 esac
 
-exit $RETVAL
+#exit $RETVAL
