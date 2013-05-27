@@ -10,16 +10,16 @@ PKG=$(whiptail --title "$TITLE" --menu "Options:" 20 60 5 \
 
 case "$PKG" in
 	1)
-		yum install postgresql-server
+		yum install -y postgresql-server
 		;;
 	2)
-		yum install postgresql
+		yum install -y postgresql
 		;;
 	3)
-		yum install postgresql-server postgresql
+		yum install -y postgresql-server postgresql
 		;;
 	4)
-		yum install pgpool-II
+		yum install -y pgpool-II
 		;;
 	*)
 		
