@@ -69,6 +69,9 @@ ln -s /srv/php-5.4.15/ /srv/php
 vim /srv/php-5.4.15/etc/php-fpm.conf <<end > /dev/null 2>&1
 :25,25s/;//
 :32,32s/;//
+:217,217s/pm.max_children = 5/pm.max_children = 512/
+:243,243s/;pm.max_requests = 500/pm.max_requests = 1024/
+:440,440s/;rlimit_files = 1024/rlimit_files = 10240/
 :wq
 end
 
@@ -81,6 +84,8 @@ vim /srv/php-5.4.15/etc/php.ini <<EOF > /dev/null 2>&1
 :%s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
 :%s$;date.timezone =$date.timezone = Asia/Hong_Kong$
 :%s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:375,375s/expose_php = On/expose_php = Off/
+:1414,1414s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF
 
