@@ -33,7 +33,6 @@ cd php-5.4.15
 --with-pdo-mysql \
 --with-mysql-sock=/var/lib/mysql/mysql.sock \
 --with-openssl \
---with-mhash \
 --with-xsl \
 --with-recode \
 --enable-sockets \
