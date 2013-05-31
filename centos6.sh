@@ -14,7 +14,7 @@ yum install -y telnet wget rsync
 yum install -y system-config-network-tui bind-utils
 yum install -y vim-enhanced
 
-yum install -y openssh-clients
+#yum install -y openssh-clients
 
 rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
 rpm -K http://packages.sw.be/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm
@@ -26,8 +26,8 @@ yum update -y
 
 cat >> /etc/security/limits.conf <<EOF
 
-* soft nofile 65536
-* hard nofile 65536
+* soft nofile 40960
+* hard nofile 40960
 EOF
 
 
