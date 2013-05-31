@@ -18,6 +18,11 @@ cd curl-7.30.0
 ./configure --prefix=/srv/curl-7.30.0/ --without-nss --with-ssl && make && make install
 cd ..
 
+wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz && tar zxf libiconv-1.14.tar.gz && cd libiconv-1.14
+./configure --prefix=/srv/libiconv-1.14
+make && make install
+cd ..
+ 
 tar zxvf php-5.2.17.tar.gz
 gzip -cd php-5.2.17-fpm-0.5.14.diff.gz | patch -d php-5.2.17 -p1
 
@@ -31,12 +36,12 @@ cd php-5.2.17
 --with-libdir=lib64 \
 --with-pear \
 --with-curl=/srv/curl-7.28.1 \
+--with-iconv-dir=/srv/libiconv-1.14 \
 --with-gd \
 --with-jpeg-dir \
 --with-png-dir \
 --with-freetype-dir \
 --with-zlib-dir \
---with-iconv \
 --with-mcrypt \
 --with-mhash \
 --with-mysql \
@@ -74,14 +79,9 @@ echo "/srv/php-5.2.17/sbin/php-fpm start" >> /etc/rc.local
 
 ln -s /srv/php-5.2.17/ /srv/php
 
-vim /srv/php-5.2.17/etc/php-fpm.conf <<end > /dev/null 2>&1
-:25,25s/;//
-:32,32s/;//
-:217,217s/pm.max_children = 5/pm.max_children = 512/
-:243,243s/;pm.max_requests = 500/pm.max_requests = 1024/
-:440,440s/;rlimit_files = 1024/rlimit_files = 10240/
-:wq
-end
+#vim /srv/php-5.2.17/etc/php-fpm.conf <<end > /dev/null 2>&1
+#:wq
+#end
 
 vim /srv/php-5.2.17/etc/php.ini <<EOF > /dev/null 2>&1
 :254,254s$;open_basedir =$open_basedir = /www/:/tmp/:/srv/php-5.2.17/lib/php/:/srv/php-5.2.17/bin/$
