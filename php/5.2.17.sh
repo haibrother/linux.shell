@@ -1,5 +1,8 @@
 #!/bin/bash
 
+groupadd -g 80 www
+adduser -o --home /www --uid 80 --gid 80 -c "Web Application" www
+
 cd /usr/local/src/
 
 rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt
@@ -99,9 +102,13 @@ EOF
 #:%s/upload_max_filesize = 2M/upload_max_filesize = 8M/
 
 /srv/php-5.2.17/bin/pecl install apc
-ln -s /srv/php-5.2.17/lib/php/extensions/no-debug-non-zts-20100525/apc.so /srv/php-5.2.17/lib/php/extensions/
 cat > /srv/php-5.2.17/etc/conf.d/apc.ini <<EOF
 extension=apc.so
 EOF
 
-php -r 'phpinfo();' |grep apc
+#php -r 'phpinfo();' |grep apc
+
+cat >> ~/.bash_profile <<EOF
+
+export PATH=$PATH:/srv/php/bin
+EOF
