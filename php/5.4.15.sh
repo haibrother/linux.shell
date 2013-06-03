@@ -79,7 +79,7 @@ vim /srv/php-5.4.15/etc/php.ini <<EOF > /dev/null 2>&1
 :%s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.4.15/lib/php:/srv/php-5.4.15/share"!
 :%s:extension_dir = "./":extension_dir = "/srv/php-5.4.15/lib/php/extensions":
 :%s/memory_limit = 128M/memory_limit = 16M/
-:%s$;open_basedir = $open_basedir = /www/:/tmp/:/srv/php-5.4.15/lib/php/:/srv/php-5.4.15/bin/$
+:%s$;open_basedir = $open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.4.15/lib/php/:/srv/php-5.4.15/bin/$
 :%s/upload_max_filesize = 2M/upload_max_filesize = 8M/
 :%s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
 :%s$;date.timezone =$date.timezone = Asia/Hong_Kong$
