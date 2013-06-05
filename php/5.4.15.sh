@@ -78,13 +78,13 @@ end
 vim /srv/php-5.4.15/etc/php.ini <<EOF > /dev/null 2>&1
 :%s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.4.15/lib/php:/srv/php-5.4.15/share"!
 :%s:extension_dir = "./":extension_dir = "/srv/php-5.4.15/lib/php/extensions":
-:%s/memory_limit = 128M/memory_limit = 16M/
-:%s$;open_basedir = $open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.4.15/lib/php/:/srv/php-5.4.15/bin/$
-:%s/upload_max_filesize = 2M/upload_max_filesize = 8M/
-:%s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
-:%s$;date.timezone =$date.timezone = Asia/Hong_Kong$
-:%s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
+:308,308s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.4.15/lib/php/:/srv/php-5.4.15/bin/$
 :375,375s/expose_php = On/expose_php = Off/
+:405,405s/memory_limit = 128M/memory_limit = 16M/
+:763,763s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
+:800,800s/upload_max_filesize = 2M/upload_max_filesize = 8M/
+:919,919s$;date.timezone =$date.timezone = Asia/Hong_Kong$
+:1396,1396s:;session.save_path = "/tmp":session.save_path = "/dev/shm":
 :1414,1414s/session.name = PHPSESSID/session.name = JSESSIONID/
 :wq
 EOF

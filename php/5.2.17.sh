@@ -90,6 +90,8 @@ vim /srv/php-5.2.17/etc/php.ini <<EOF > /dev/null 2>&1
 :254,254s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.2.17/lib/php/:/srv/php-5.2.17/bin/$
 :297,297s/expose_php = On/expose_php = Off/
 :307,307s/memory_limit = 128M/memory_limit = 16M/
+:496,496s/magic_quotes_gpc = Off/magic_quotes_gpc = On/
+:499,499s/magic_quotes_runtime = Off/magic_quotes_runtime = On/
 :525,525s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.2.17/lib/php:/srv/php-5.2.17/share"!
 :542,542s:extension_dir = "./":extension_dir = "/srv/php-5.2.17/lib/php/extensions/no-debug-non-zts-20060613":
 :571,571s/; cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/
