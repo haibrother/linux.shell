@@ -53,6 +53,9 @@ cd php-5.4.16
 --disable-debug
 
 make && make install
+
+strip /srv/php-5.4.16/bin/php
+strip /srv/php-5.4.16/bin/php-cgi
 		
 mkdir -p /srv/php-5.4.16/etc/conf.d
 cp php.ini-* /srv/php-5.4.16/etc/
