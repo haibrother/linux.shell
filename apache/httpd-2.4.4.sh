@@ -86,15 +86,25 @@ cd httpd-2.4.4
 
 make && make install
 
+ln -sv /srv/httpd-2.4.4 /srv/httpd
+
 vim /srv/httpd-2.4.4/conf/httpd.conf <<VIM > /dev/null 2>&1
 s/#ServerName www.example.com:80/ServerName localhost:80/
 :450,450s/#//
 :wq
 VIM
 
+cat >> /srv/httpd-2.4.4/conf/mime.types <<EOF
+
+application/x-httpd-php             php
+application/x-httpd-php-source      phps
+EOF
+ 
+
 sed -i "s/ServerTokens Full/ServerTokens Prod/" /srv/httpd-2.4.4/conf/extra/httpd-default.conf
 
 sed "2i#\n# chkconfig: 35 85 35" /srv/httpd-2.4.4/bin/apachectl > /etc/init.d/httpd
+chmod +x /etc/init.d/httpd
 chkconfig --add httpd
 
 iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
