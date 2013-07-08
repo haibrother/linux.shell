@@ -46,7 +46,7 @@ check_process postmaster
 check_process mysqld
 check_process mysqld_safe
 
-section("Operation System files")
+section "Operation System files"
 check_file /etc/resolv.conf
 check_file /etc/security/limits.conf
 check_file /etc/sysctl.conf
