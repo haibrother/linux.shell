@@ -110,6 +110,11 @@ EOF
 
 #php -r 'phpinfo();' |grep apc
 
+/srv/php-5.2.17/bin/pecl install redis
+cat > /srv/php-5.2.17/etc/conf.d/redis.ini <<EOF
+extension=redis.so
+EOF
+
 cat >> ~/.bash_profile <<EOF
 
 export PATH=$PATH:/srv/php/bin
