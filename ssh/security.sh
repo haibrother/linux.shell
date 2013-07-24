@@ -26,6 +26,7 @@ vim /etc/ssh/sshd_config <<VIM > /dev/null 2>&1
 :s/#PermitRootLogin yes/PermitRootLogin no/
 :s/#MaxAuthTries 6/MaxAuthTries 3/
 :%s/#AuthorizedKeysFile/AuthorizedKeysFile/
+:%s/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/
 :%s/GSSAPIAuthentication yes/GSSAPIAuthentication no/
 :%s/GSSAPICleanupCredentials yes/GSSAPICleanupCredentials no/
 :wq
