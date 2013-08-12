@@ -15,3 +15,9 @@ chkconfig nginx on
 service nginx start
 
 cp /etc/nginx/nginx.conf{,.original}
+
+vim /etc/nginx/nginx.conf <<VIM > /dev/null 2>&1
+:%s/#gzip/server_tokens off;\r    gzip/
+:%s/#gzip/gzip/
+:wq
+VIM
