@@ -79,6 +79,7 @@ end
 
 vim /srv/php-5.4.16/etc/php.ini <<EOF > /dev/null 2>&1
 :308,308s$;open_basedir =$open_basedir = /www/:/tmp/:/var/tmp/:/srv/php-5.4.16/lib/php/:/srv/php-5.4.16/bin/$
+:314,314s/disable_functions =/disable_functions = ini_set,set_time_limit,set_include_path/
 :375,375s/expose_php = On/expose_php = Off/
 :405,405s/memory_limit = 128M/memory_limit = 16M/
 :705,705s!;include_path = ".:/php/includes"!include_path = ".:/srv/php-5.4.16/lib/php:/srv/php-5.4.16/share"!
